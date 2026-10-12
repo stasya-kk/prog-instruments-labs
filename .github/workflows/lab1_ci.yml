@@ -7,6 +7,8 @@ on:
       - main
     paths:
       - 'lab_1/**'
+      - '.github/workflows/lab1_ci.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
