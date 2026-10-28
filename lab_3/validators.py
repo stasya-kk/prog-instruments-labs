@@ -11,7 +11,7 @@ IDENTIFIER_RE = re.compile(r"^\d{2}-\d{2}/\d{2}$")
 
 OCCUPATION_RE = re.compile(r"^[А-Яа-яЁёA-Za-z\s\-]+$")
 
-LATITUDE_RE = re.compile(r"^-?\d+(\.\d+)?$")
+LATITUDE_RE = re.compile( r"^-?(90(\.0+)?|[0-8]?\d(\.\d+)?)$")
 
 BLOOD_TYPE_RE = re.compile(r"^(A|B|AB|O)[+\u2212]$")
 
@@ -22,7 +22,9 @@ UUID_RE = re.compile(
     r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
 )
 
-DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+# Год — 4 цифры, месяц 01-12, день 01-31.
+#     Високосность (29 февраля) проверяется отдельно в is_valid_date().
+DATE_RE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$")
 
 
 def is_valid_telephone(value: str) -> bool:
